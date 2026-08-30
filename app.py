@@ -4,3 +4,4 @@ t=9
 z=x+y/t
 print(z)
 print("The value of z is:", z)
+print("The value of x is:", x)
