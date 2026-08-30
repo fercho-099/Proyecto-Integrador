@@ -1,4 +1,5 @@
 x=3
 y=5
-z=x+y
+t=9
+z=x+y*t
 print(z)
