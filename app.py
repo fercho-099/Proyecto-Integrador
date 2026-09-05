@@ -1,7 +1,14 @@
-x=3
-y=5
-t=9
-z=x+y/t
-print(z)
-print("The value of z is:", z)
-print("The value of x is:", x)
+import gradio as gr
+
+# Primeras lineas...
+def greet(name, intensity):
+    return "Hello, " + name + "!" * int(intensity)
+
+demo = gr.Interface(
+    fn=greet,
+    inputs=["text", "slider"],
+    outputs=["text"],
+    api_name="predict"
+)
+
+demo.launch()
