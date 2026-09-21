@@ -1,3 +1,5 @@
+import os
+
 import gradio as gr
 
 print(gr.__version__)
@@ -25,4 +27,8 @@ with gr.Blocks() as demo:
     botonPaseo.click(fn=Elegir_paseo, inputs=[paseo], outputs=resultado)
     
 
-    demo.launch(share=True)
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=int(os.environ.get("PORT", 10000)),
+        share=True
+    )
