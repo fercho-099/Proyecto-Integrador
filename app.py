@@ -1,15 +1,28 @@
 import gradio as gr
+
 print(gr.__version__)
 
-# Primeras lineas...
+
 def greet(name, intensity):
     return "Hello, " + name + "!" * int(intensity)
 
-demo = gr.Interface(
-    fn=greet,
-    inputs=["text", "slider"],
-    outputs=["text"],
-    api_name="predict"
-)
+def Elegir_paseo(paseo):
+    
+    return f"Elegiste: {paseo}"
 
-demo.launch()
+with gr.Blocks() as demo:
+    gr.Markdown("Paseos por la Ciudad")
+
+    
+    name = gr.Textbox(label="Nombre")
+    intensity = gr.Slider(minimum=0, maximum=10, step=1, label="Euforia de saludo")
+    btn_greet = gr.Button("Como es un saludo Euforico")
+    output = gr.Textbox(label="Saludo Euforico")
+    btn_greet.click(fn=greet, inputs=[name, intensity], outputs=output)
+    paseo = gr.Radio(choices=["Circo", "Cine", "Teatro"], value="Cine", label="Tipo de Paseo")
+    botonPaseo = gr.Button("Eleccion de paseo")
+    resultado = gr.Textbox(label="Elegí")
+    botonPaseo.click(fn=Elegir_paseo, inputs=[paseo], outputs=resultado)
+    
+
+    demo.launch(share=True)
